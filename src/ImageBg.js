@@ -16,7 +16,7 @@ function ImageBg() {
 
 
     const formData=new FormData()
-    formData.append('image_file',image, image.name)
+    formData.append('image_file',image,image.name)
     formData.append('size',"auto")
 
     fetch(url,{
@@ -42,16 +42,15 @@ function ImageBg() {
     <h1 className="font-semibold">Remove Background for your Image</h1>
     
     <input type="file" onChange={(e)=>{
-      
-      const file=e.target.files[0]
-      setImage(URL.createObjectURL(file))
+      setImage(e.target.files[0])
     
     }}></input>
+
     {image && (
-      <div className="imageDisplay">
-        <img src={image} alt="Selected" width="300"/>
-      </div>
-    )}
+      <div>
+        <img src={image} alt="Selected" width="300" />
+      </div>)
+    }
     <button className="bg-info remove" onClick={handleBg}>Remove Background</button>
 
     {bgremover && (
